@@ -5,7 +5,8 @@
 
 ## Packages: Unity Registery
  - Visual Studio Editor v2.0.16 *
- 
+ - Unity UI v1.0.0
+
 ## Packages: My Assets
  - None
 
