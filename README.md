@@ -19,7 +19,12 @@
     <ul>
         <li>Universal Quit function for the Unity Editor and game builts</li>
         <li>Simple capsule dummy prefab for player and enemy</li>
+		<li>Sandbox Scene<li>
     </ul>
+	<br />
+	<h4>Sandbox scene</h4>
+	For the Sandbox Scene we use Free Assets from Unity Asset Store. We can not provide it here in the repository you need to download it from the Store and import it to the Project.
+	 - https://assetstore.unity.com/packages/3d/props/exterior/street-bench-656
     <br />
     <p align="center">
     <a href="https://github.com/Assambra/Module-Shared/wiki"><strong>Explore the docs »</strong></a>
