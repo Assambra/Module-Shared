@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 254706806}
   - component: {fileID: 254706805}
   m_Layer: 0
-  m_Name: EntitySpawner
+  m_Name: SpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

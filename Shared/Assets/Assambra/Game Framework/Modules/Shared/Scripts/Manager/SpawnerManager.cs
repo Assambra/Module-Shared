@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class EntitySpawner : MonoBehaviour
+public class SpawnerManager : MonoBehaviour
 {
 
     [Header("Serialize Fields Player")]
