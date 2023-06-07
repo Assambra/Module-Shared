@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Assambra/Demo/DemoScenes/Shared.unity
+    path: Assets/Assambra/Demo/DemoScenes/Shared/Shared.unity
     guid: 0eb51a87d8a109f4aa03e72b703463fe
   m_configObjects: {}
