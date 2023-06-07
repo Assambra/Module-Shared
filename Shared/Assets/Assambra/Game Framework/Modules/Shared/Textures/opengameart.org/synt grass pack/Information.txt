@@ -1,5 +1,5 @@
 Original Files can found here:
 https://opengameart.org/content/synthetic-grass-texture-pack
 
-Added Normal Map texture for some Files
+Added for all textures a Normal Map texture.
 
