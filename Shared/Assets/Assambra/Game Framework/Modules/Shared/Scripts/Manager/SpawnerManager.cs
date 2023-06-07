@@ -19,7 +19,7 @@ public class SpawnerManager : MonoBehaviour
             if (spawnPointPlayer)
             {
                 GameObject go = playerPrefab.gameObject;
-                Instantiate(go, spawnPointPlayer.transform.position, spawnPointPlayer.transform.rotation);
+                Instantiate(go, spawnPointPlayer.transform.position, Quaternion.identity);
                 Debug.Log("Player spawned");
             }
             else
@@ -33,7 +33,7 @@ public class SpawnerManager : MonoBehaviour
             if (spawnPointEnemy)
             {
                 GameObject go = enemyPrefab.gameObject;
-                Instantiate(go, spawnPointEnemy.transform.position, spawnPointEnemy.transform.rotation);
+                Instantiate(go, spawnPointEnemy.transform.position, Quaternion.identity);
                 Debug.Log("Enemy spawned");
             }
             else

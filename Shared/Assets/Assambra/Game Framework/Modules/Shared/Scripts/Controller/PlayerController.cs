@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Serialize fields")]
     [SerializeField] private CameraController cameraController = null;
+    [SerializeField] private CharacterController characterController = null;
 
     [Header("Movement speed")]
     [SerializeField] private float movementSpeed = 2f;
