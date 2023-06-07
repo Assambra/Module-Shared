@@ -1959,5 +1959,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 8671849202979528917, guid: 5aa494f3cad16c4439259cd3d9edc08e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa494f3cad16c4439259cd3d9edc08e, type: 3}
