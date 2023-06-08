@@ -99,7 +99,8 @@ MonoBehaviour:
   cameraController: {fileID: 0}
   characterController: {fileID: 537035508464650131}
   movementSpeed: 10
-  keyRotationSpeed: 150
+  rotationSpeed: 150
+  jumpHeight: 2
 --- !u!1001 &7025364967914924212
 PrefabInstance:
   m_ObjectHideFlags: 0
