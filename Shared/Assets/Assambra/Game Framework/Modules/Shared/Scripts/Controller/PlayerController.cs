@@ -1,4 +1,6 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public class PlayerController : MonoBehaviour
@@ -12,11 +14,10 @@ public class PlayerController : MonoBehaviour
     
 
     [Header("Rotation speed")]
-    [SerializeField] private float keyRotationSpeed = 150f;
+    [SerializeField] private float rotationSpeed = 150f;
 
     // Private variables
     private Vector3 movement = Vector3.zero;
-    
 
     private float lastPlayerRotation = 0f;
     private float playerRotationDifference = 0f;
@@ -32,24 +33,28 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        lastPlayerRotation = transform.localEulerAngles.y;
-
         GetAxisInput();
+    }
 
+    private void FixedUpdate()
+    {
+        lastPlayerRotation = transform.eulerAngles.y;
 
         if (Input.GetMouseButton(1))
         {
-            transform.Translate(movement * movementSpeed * Time.deltaTime);
+            characterController.Move(transform.rotation * movement * Time.deltaTime * movementSpeed);
         }
         else
         {
-            transform.localEulerAngles += new Vector3(0, movement.x * keyRotationSpeed * Time.deltaTime, 0);
-            cameraController.cameraPan += movement.x * keyRotationSpeed * Time.deltaTime;
-            
-            playerRotationDifference = lastPlayerRotation - transform.localEulerAngles.y;
-            cameraController.transform.localEulerAngles -= new Vector3(0, playerRotationDifference);
-            
-            transform.Translate(new Vector3(0, 0, movement.z) * movementSpeed * Time.deltaTime);
+            transform.Rotate(new Vector3(0, movement.x * rotationSpeed * Time.deltaTime, 0));
+
+            cameraController.cameraPan += movement.x * rotationSpeed * Time.deltaTime;
+
+            playerRotationDifference = lastPlayerRotation - transform.eulerAngles.y;
+            cameraController.transform.eulerAngles -= new Vector3(0, playerRotationDifference);
+
+
+            characterController.Move(transform.forward * movement.z * movementSpeed * Time.deltaTime);
         }
     }
 

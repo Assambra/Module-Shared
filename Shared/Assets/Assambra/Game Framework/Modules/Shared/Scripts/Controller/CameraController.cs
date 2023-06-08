@@ -1,13 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     [Header("Public")]
     public float cameraPan = 0f;
-
     public bool IsOverUIElement { set; get; }
 
     [Header("Serialize fields")]
@@ -28,7 +24,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float cameraTiltSpeed = 9f;
     [SerializeField] private float cameraTiltMin = -80f;
     [SerializeField] private float cameraTiltMax = 35f;
-
 
 
     // Private variables
@@ -67,15 +62,11 @@ public class CameraController : MonoBehaviour
             else
                 Debug.LogError("No Player with Tag Player found");
         }
-
-        gameObject.transform.localRotation = player.transform.localRotation;
-        cameraPan = player.transform.localEulerAngles.y;
     }
 
 
     void Update()
     {
-        CameraPanCorrection();
         lastCameraPan = cameraPan;
 
         GetMouseInput();
@@ -90,7 +81,7 @@ public class CameraController : MonoBehaviour
         {
             CameraTiltAndPan();
             cameraPanDifference = lastCameraPan - cameraPan;
-            player.transform.localEulerAngles -= new Vector3(0, cameraPanDifference);
+            player.transform.eulerAngles -= new Vector3(0, cameraPanDifference);
         }
     }
 
@@ -117,19 +108,11 @@ public class CameraController : MonoBehaviour
         cameraPan += mouseX * cameraPanSpeed;
         cameraTilt += mouseY * cameraTiltSpeed;
 
-        transform.localEulerAngles = new Vector3(-ClampCameraTilt(cameraTilt), cameraPan, 0);
+        transform.eulerAngles = new Vector3(-ClampCameraTilt(cameraTilt), cameraPan, 0);
     }
 
     private float ClampCameraTilt(float tilt)
     {
         return cameraTilt = Mathf.Clamp(cameraTilt, cameraTiltMin, cameraTiltMax);
-    }
-
-    private void CameraPanCorrection()
-    {
-        if (cameraPan < -180)
-            cameraPan = 180;
-        if (cameraPan > 180)
-            cameraPan = -180; 
     }
 }
