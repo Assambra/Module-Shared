@@ -1,14 +1,16 @@
 using UnityEngine;
 
+
 public class CameraController : MonoBehaviour
 {
-    [Header("Public")]
-    public float cameraPan = 0f;
-    public bool IsOverUIElement { set; get; }
+    public bool IsOverUIElement { private get;  set;}
 
     [Header("Serialize fields")]
     [SerializeField] private Camera mainCamera = null;
-    [SerializeField] private GameObject player = null;
+    [SerializeField] private GameObject cameraTarget = null;
+
+    [Header("Camera rotate camera target")]
+    [SerializeField] private bool cameraRotateCameraTarget = false;
 
     [Header("Camera offset")]
     [SerializeField] private Vector3 CameraOffset = new Vector3(0f, 1.8f, 0f);
@@ -31,11 +33,10 @@ public class CameraController : MonoBehaviour
     private float mouseY = 0f;
     private float cameraDistance = 0f;
     private float mouseWheel = 0f;
-
+    private float cameraPan = 0f;
     private float cameraTilt = 0f;
     
-    private float lastCameraPan = 0f;
-    private float cameraPanDifference = 0f;
+    private float lastPlayerRotation = 0f;
 
     private void Awake()
     {
@@ -55,10 +56,10 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        if (player == null)
+        if (cameraTarget == null)
         {
             if (GameObject.FindGameObjectWithTag("Player"))
-                player = GameObject.FindGameObjectWithTag("Player");
+                cameraTarget = GameObject.FindGameObjectWithTag("Player");
             else
                 Debug.LogError("No Player with Tag Player found");
         }
@@ -67,27 +68,28 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        lastCameraPan = cameraPan;
-
         GetMouseInput();
+        
         HandleCameraDistance();
-
-        if (Input.GetMouseButton(0) && !IsOverUIElement)
+        
+        if ((Input.GetMouseButton(0) || Input.GetMouseButton(1)) && !IsOverUIElement)
         {
             CameraTiltAndPan();
+
+            if(Input.GetMouseButton(1) && cameraRotateCameraTarget)
+                cameraTarget.transform.Rotate(new Vector3(0, mouseX * cameraPanSpeed));
+        }
+        else
+        {
+            CameraPan();
         }
 
-        if (Input.GetMouseButton(1) && !IsOverUIElement)
-        {
-            CameraTiltAndPan();
-            cameraPanDifference = lastCameraPan - cameraPan;
-            player.transform.eulerAngles -= new Vector3(0, cameraPanDifference);
-        }
+        lastPlayerRotation = cameraTarget.transform.eulerAngles.y;
     }
 
     private void LateUpdate()
     {
-        transform.position = player.transform.position + CameraOffset - transform.forward * cameraDistance;
+        transform.position = cameraTarget.transform.position + CameraOffset - transform.forward * cameraDistance;
     }
 
     private void GetMouseInput()
@@ -106,9 +108,16 @@ public class CameraController : MonoBehaviour
     private void CameraTiltAndPan()
     {
         cameraPan += mouseX * cameraPanSpeed;
-        cameraTilt += mouseY * cameraTiltSpeed;
+        cameraTilt -= mouseY * cameraTiltSpeed;
 
-        transform.eulerAngles = new Vector3(-ClampCameraTilt(cameraTilt), cameraPan, 0);
+        transform.eulerAngles = new Vector3(ClampCameraTilt(cameraTilt), cameraPan, 0);
+    }
+
+    private void CameraPan()
+    {
+        float rotDiff = lastPlayerRotation - cameraTarget.transform.eulerAngles.y;
+        cameraPan -= rotDiff;
+        transform.eulerAngles = new Vector3(cameraTilt, cameraPan, 0);
     }
 
     private float ClampCameraTilt(float tilt)

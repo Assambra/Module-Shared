@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 26242357}
   - component: {fileID: 26242356}
   m_Layer: 0
-  m_Name: CameraRig
+  m_Name: CameraController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +216,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPan: 0
   mainCamera: {fileID: 0}
-  player: {fileID: 0}
+  cameraTarget: {fileID: 0}
+  cameraRotateCameraTarget: 1
   CameraOffset: {x: 0, y: 1.8, z: 0}
   cameraStartDistance: 5
   cameraMinDistance: 0

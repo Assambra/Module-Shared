@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 
 public class PlayerController : MonoBehaviour
@@ -19,10 +17,6 @@ public class PlayerController : MonoBehaviour
     // Private variables
     private Vector3 movement = Vector3.zero;
 
-    private float lastPlayerRotation = 0f;
-    private float playerRotationDifference = 0f;
-
-
     private void Awake()
     {
         cameraController = GameObject.FindObjectOfType<CameraController>();
@@ -38,23 +32,15 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        lastPlayerRotation = transform.eulerAngles.y;
-
         if (Input.GetMouseButton(1))
         {
             characterController.Move(transform.rotation * movement * Time.deltaTime * movementSpeed);
         }
         else
         {
-            transform.Rotate(new Vector3(0, movement.x * rotationSpeed * Time.deltaTime, 0));
-
-            cameraController.cameraPan += movement.x * rotationSpeed * Time.deltaTime;
-
-            playerRotationDifference = lastPlayerRotation - transform.eulerAngles.y;
-            cameraController.transform.eulerAngles -= new Vector3(0, playerRotationDifference);
-
-
             characterController.Move(transform.forward * movement.z * movementSpeed * Time.deltaTime);
+
+            transform.Rotate(new Vector3(0, movement.x * rotationSpeed * Time.deltaTime, 0));
         }
     }
 
