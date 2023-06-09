@@ -487,7 +487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5733563174771537241, guid: bc2528ef9df5b2f4f9b9f01dd38b9e44, type: 3}
   spawnPointPlayer: {fileID: 1006748840}
-  enemyPrefab: {fileID: 649311931719758076, guid: 07e06210f87314e45930ea44a6ba2861, type: 3}
+  enemyPrefab: {fileID: 2101220464806265665, guid: 8909e613b8ad7114f84e2f5f0b11788a, type: 3}
   spawnPointEnemy: {fileID: 354466748}
 --- !u!4 &254706806
 Transform:
