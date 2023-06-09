@@ -26,7 +26,8 @@
     </ul>
 	<br />
 	<h4>Sandbox scene</h4>
-	For the Sandbox Scene we use Free Assets from Unity Asset Store. We can not provide it here in the repository you need to download it from the Store and import it to the Project. 
+	For the Sandbox Scene we use free assets from the Unity Asset Store and animations from Mixamo.com. We can not provide it here in the repository you need to download manually and import it to the Project. 
+    <h5> Unity Asset Store</h5>
     <ul>
         <li>
             <a href="https://assetstore.unity.com/packages/3d/props/exterior/street-bench-656">Street Bench</a>
@@ -36,6 +37,15 @@
         </li>
         <li>
             <a href="https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/skeleton-warrior-1-222338">Skeleton Warrior 1</a>        
+        </li>
+    </ul>
+    <h5>Mixamo - Animations</h5>
+    <ul>
+        <li>
+            Locomotion Pack
+        </li>
+        <li>
+            Sword and Shield Pack
         </li>
     </ul>
     <br />
