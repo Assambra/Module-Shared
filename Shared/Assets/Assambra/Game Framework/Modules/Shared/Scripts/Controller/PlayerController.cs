@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        GetAxisInput();
+        GetAxisInputNormalized();
 
         if (playerVelocity.y < 0f && isGrounded)
             playerVelocity.y = gravity * Time.deltaTime;
@@ -65,8 +65,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void GetAxisInput()
+    private void GetAxisInputNormalized()
     {
+        // Get Axis Input
         movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        
+        // Normalize
+        movement.Normalize();
     }
 }
