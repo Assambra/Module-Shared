@@ -44,7 +44,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5733563174771537241}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 81bb9eea30387e442899949a80011e55, type: 3}
   m_Controller: {fileID: 9100000, guid: 2f96a123ec18a8946929e5baf734be1f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -73,7 +73,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.03
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!114 &3747838029485322045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +88,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 0}
   characterController: {fileID: 3747838029485322046}
-  movementSpeed: 10
+  animator: {fileID: 2823155442262821376}
+  movementSpeed: 2.27
   rotationSpeed: 150
   jumpHeight: 2
 --- !u!1 &6796310524997614870

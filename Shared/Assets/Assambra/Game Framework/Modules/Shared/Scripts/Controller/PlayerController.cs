@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool IsWalking = false;
+
     [Header("Serialize fields")]
     [SerializeField] private CameraController cameraController = null;
     [SerializeField] private CharacterController characterController = null;
-
+    [SerializeField] private Animator animator = null;
+    [SerializeField] private MovementState movementState;
     [Header("Movement speed")]
     [SerializeField] private float movementSpeed = 2f;
     
@@ -30,12 +33,16 @@ public class PlayerController : MonoBehaviour
 
         if (cameraController == null)
             Debug.LogError("No CameraController found!");
+
+        movementState = MovementState.Stand;
     }
 
     void Update()
     {
         GetAxisInputNormalized();
 
+        SetMovementState();
+        animator.SetInteger("MovementState", (int)movementState);
         if (playerVelocity.y < 0f && isGrounded)
             playerVelocity.y = gravity * Time.deltaTime;
         else
@@ -56,12 +63,33 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             characterController.Move(transform.rotation * movement * Time.deltaTime * movementSpeed);
+            
+            if (movement.z > 0.01 || movement.z < -0.01)
+                animator.SetFloat("Vertical", movement.z);
+            else
+                animator.SetFloat("Vertical", 0);
+            
+            if (movement.x > 0.01 || movement.x < -0.01)
+                animator.SetFloat("Horizontal", movement.x);
+            else
+                animator.SetFloat("Horizontal", 0);
+
         }
         else
         {
             characterController.Move(transform.forward * movement.z * movementSpeed * Time.deltaTime);
 
             transform.Rotate(new Vector3(0, movement.x * rotationSpeed * Time.deltaTime, 0));
+
+            if (movement.z > 0.01 || movement.z < -0.01)
+                animator.SetFloat("Vertical", movement.z);
+            else
+                animator.SetFloat("Vertical", 0);
+
+            if (movement.x > 0.01 || movement.x < -0.01)
+                animator.SetFloat("Horizontal", movement.x);
+            else
+                animator.SetFloat("Horizontal", 0);
         }
     }
 
@@ -72,5 +100,31 @@ public class PlayerController : MonoBehaviour
         
         // Normalize
         movement.Normalize();
+    }
+
+    private void SetMovementState()
+    {
+        if (movement.z != 0)
+        {
+            if(!IsWalking)
+                movementState = MovementState.Run;
+            else
+                movementState = MovementState.Walk;
+        }
+        else
+        {
+            movementState = MovementState.Stand;
+        }
+        
+        if (Input.GetButton("Sprint") && movementState != MovementState.Stand)
+        {
+            if(movementState == MovementState.Walk)
+                IsWalking = false;
+
+            movementState = MovementState.Sprint;
+        }
+        
+
+        
     }
 }

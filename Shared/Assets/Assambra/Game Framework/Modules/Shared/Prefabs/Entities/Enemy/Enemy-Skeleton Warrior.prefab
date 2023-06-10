@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8472785338639776792}
   - component: {fileID: 7402303023997229350}
   m_Layer: 0
-  m_Name: Enemy - Skeleton Warrior
+  m_Name: Enemy-Skeleton Warrior
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101220464806265665}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 8bbf8b7b8b5f1144ba263c0e541f0452, type: 3}
   m_Controller: {fileID: 9100000, guid: 2f96a123ec18a8946929e5baf734be1f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
