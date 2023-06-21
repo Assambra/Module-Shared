@@ -1,4 +1,4 @@
-public enum MovementState
+public enum VerticalState
 {
     Stand = 0,
     Walk = 1,

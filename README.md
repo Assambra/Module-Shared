@@ -33,20 +33,11 @@
             <a href="https://assetstore.unity.com/packages/3d/props/exterior/street-bench-656">Street Bench</a>
         </li>
         <li>
-            <a href="https://assetstore.unity.com/packages/3d/characters/humanoids/banana-man-196830">Banana Man</a>        
-        </li>
-        <li>
             <a href="https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/skeleton-warrior-1-222338">Skeleton Warrior 1</a>        
         </li>
     </ul>
     <h5>Mixamo - Animations</h5>
     <ul>
-        <li>
-            Locomotion Pack
-        </li>
-        <li>
-            Sword and Shield Pack
-        </li>
     </ul>
     <br />
     <p align="center">
