@@ -135,6 +135,7 @@ public class PlayerController : MonoBehaviour
             verticalState = VerticalState.Sprint;
         }
     }
+
     private void SetMovementSpeedValue()
     {
         switch (verticalState)
@@ -143,81 +144,37 @@ public class PlayerController : MonoBehaviour
                 movementSpeed = 0;
                 break;
             case VerticalState.Walk:
-                // diagonal
-                if(movement.z != 0 && movement.x != 0)
-                {
-                    // forward
-                    if(movement.z > 0 )
-                    {
-                        movementSpeed = 1.45f;
-                    }
-                    // backward
-                    if (movement.z < 0)
-                        movementSpeed = 1.115f;
-                }  
-                else
-                {
-                    // forward
-                    if (movement.z > 0)
-                        movementSpeed = 1.45f;
-                    // backward
-                    else
-                        movementSpeed = 1.115f;
-                    // Left or right
-                    if (movement.x != 0 && movement.z == 0)
-                        movementSpeed = 1.45f;
-                }
-                
+                // forward
+                if (movement.z > 0)
+                    movementSpeed = 1.45f;
+                // backward
+                if(movement.z < 0)
+                    movementSpeed = 1.115f;
+                // left and right
+                if (movement.x != 0 && movement.z == 0)
+                    movementSpeed = 1.45f;
                 break;
             case VerticalState.Run:
-                // diagonal
-                if (movement.z != 0 && movement.x != 0)
-                {
-                    // forward
-                    if (movement.z > 0)
-                    {
-                        movementSpeed = 4.251f;
-                    }
-                    // backward
-                    else
-                        movementSpeed = 2.869f;
-                }
-                else
-                {
-                    //forward
-                    if (movement.z > 0)
-                        movementSpeed = 4.251f;
-                    // Backward
-                    else
-                        movementSpeed = 2.869f;
-                    // Left and right
-                    if (movement.x != 0 && movement.z == 0)
-                        movementSpeed = 4.178f;
-                }    
+                // forward
+                if (movement.z > 0)
+                    movementSpeed = 4.251f;
+                // backward
+                if (movement.z < 0)
+                    movementSpeed = 2.869f;
+                // left and right
+                if (movement.x != 0 && movement.z == 0)
+                    movementSpeed = 4.178f;
                 break;
             case VerticalState.Sprint:
-                if (movement.z != 0 && movement.x != 0)
-                {
-                    // forward
-                    if (movement.z > 0)
-                        movementSpeed = 5.255f;
-                    // backward
-                    else
-                        movementSpeed = 3.442f;
-                }
-                else
-                {
-                    //forward
-                    if (movement.z > 0)
-                        movementSpeed = 5.255f;
-                    // backward
-                    else
-                        movementSpeed = 3.442f;
-                    
-                    // Left and right
-                    if (movement.x != 0 && movement.z == 0)
-                        movementSpeed = 5.007f;
-                }
+                // forward
+                if (movement.z > 0)
+                    movementSpeed = 5.255f;
+                // backward
+                if (movement.z < 0)
+                    movementSpeed = 3.442f;
+                // left and right
+                if (movement.x != 0 && movement.z == 0)
+                    movementSpeed = 5.007f;
                 break;
             default:
                 break;
